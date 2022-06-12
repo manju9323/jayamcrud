@@ -3,8 +3,8 @@ import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/Button'
 //import 'bootstrap/dist/css/bootstrap.min.css';
 import {Link} from 'react-router-dom';
-import { url } from './../App'
-import axios from 'axios'
+import { url } from './../App';
+import axios from 'axios';
 
 function Home() {
     let [can, setCan] = useState([])

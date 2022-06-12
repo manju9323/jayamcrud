@@ -1,6 +1,5 @@
-import {useEffect} from 'react'
 import axios from 'axios';
-import React,{useState} from 'react';
+import React,{useEffect,useState} from 'react';
 import {url} from '../App'
 import {Link} from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
@@ -9,16 +8,16 @@ import Form from 'react-bootstrap/Form';
 
 
 function EditBar() {
-    
+  let params=useParams(); 
 
-    const[Name, setname] = useState("")
-    const[age, setage] = useState("")
-    const[codeward, setcode] = useState("")
-    const[Company, setcompany] = useState("")
-    const[value, setvalue] = useState("")
-const params=useParams(); 
+    let[Name, setname] = useState("")
+    let[age, setage] = useState("")
+    let[codeward, setcode] = useState("")
+    let[Company, setcompany] = useState("")
+    let[value, setvalue] = useState("")
 
-    const getdata=async()=>{
+
+   let getdat=async()=>{
         let res=await axios.get(url+'/'+params.id)
         console.log(res.data)
 setname(res.data.Name)
@@ -28,16 +27,12 @@ setcompany(res.data.Company)
 setvalue(res.data.value)
        }
        
-       
-         useEffect(()=>{
-           getdata()
-         },[])
-
-   
-    let Submit=async()=>{
-      (alert(`are yoy sure want to update:${params.id}`)) 
-        await axios.put(`${url}/${params.id}`,{Name,age,codeward,Company,value})
-        }
+        let Submit=async()=>{
+          (alert(`are yoy sure want to update:${params.id}`)) 
+            await axios.put(`${url}/${params.id}`,{Name,age,codeward,Company,value})
+            }
+            
+            useEffect(()=>{getdat()},[])
         
     return (
         
