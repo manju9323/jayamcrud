@@ -17,7 +17,7 @@ function EditBar() {
     let[value, setvalue] = useState("")
 
 
-   let getdat=async()=>{
+   let getdata=async()=>{
         let res=await axios.get(url+'/'+params.id)
         console.log(res.data)
 setname(res.data.Name)
@@ -26,14 +26,15 @@ setcode(res.data.codeward)
 setcompany(res.data.Company)
 setvalue(res.data.value)
        }
-       
+       useEffect(()=>{getdata()},[])
+        
         let Submit=async()=>{
-          (alert(`are yoy sure want to update:${params.id}`)) 
+          
             await axios.put(`${url}/${params.id}`,{Name,age,codeward,Company,value})
+            (alert(`are yoy sure want to update:${params.id}`))
             }
             
-            useEffect(()=>{getdat()},[])
-        
+          
     return (
         
         <><div className="tab"><h1>EDIT PROFILE</h1></div>
